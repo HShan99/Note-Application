@@ -16,10 +16,8 @@ class NameController extends Controller
     public function index()
     {
         $userId = Auth::user()->id;
-        $notes = Note::where('user_id', $userId)->latest('updated_at')->get();
-        $notes->each(function($note){
-            dump($note->title);
-        });
+        $notes = Note::where('user_id', $userId)->latest('updated_at')->paginate(5);
+        return view('notes.index')->with('notes',$notes);
     }
 
     /**
@@ -29,7 +27,7 @@ class NameController extends Controller
      */
     public function create()
     {
-        //
+        return view('notes.create');
     }
 
     /**
