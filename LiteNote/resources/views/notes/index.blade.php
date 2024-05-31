@@ -13,7 +13,7 @@
             @forelse ($notes as $note)
             <div class="p-6 my-6 mt-4 mb-2 bg-white border-b shadow-sm border-b-gray-200 sm:rounded-lg">
                 <h2 class="text-2xl font-bold">
-                    {{$note->title}}
+                    <a href="{{route('notes.show', $note->uuids)}}">{{$note->title}}</a>
                 </h2>
                 <p class="mt-2">
                     {{Str::limit($note->text, 200)}}
