@@ -38,7 +38,19 @@ class NameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+           'title' => 'required|max:120',
+           'text' => 'required'
+        ]);
+
+        // ***************************Note::create (use that method then no need save line $note->save()*******************************
+        $note = new Note([
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'text' =>$request->text
+        ]);
+        $note->save();
+        return to_route('notes.index');
     }
 
     /**
