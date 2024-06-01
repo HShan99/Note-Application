@@ -7,13 +7,13 @@
 
     <div class="py-12">
         <div class="mx-auto mb-2 max-w-7xl sm:px-6 lg:px-8">
-
+            <x-alert>{{@session('success')}}</x-alert>
             <a href="{{route('notes.create')}}" class="inline-block px-4 py-2 mt-2 text-sm font-bold text-white uppercase rounded-md" style="background-color: indigo">+ New Note</a>
 
             @forelse ($notes as $note)
             <div class="p-6 my-6 mt-4 mb-2 bg-white border-b shadow-sm border-b-gray-200 sm:rounded-lg">
                 <h2 class="text-2xl font-bold">
-                    <a href="{{route('notes.show', $note->uuids)}}">{{$note->title}}</a>
+                    <a href="{{route('notes.show', $note)}}">{{$note->title}}</a>
                 </h2>
                 <p class="mt-2">
                     {{Str::limit($note->text, 200)}}
