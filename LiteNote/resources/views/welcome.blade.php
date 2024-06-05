@@ -6,6 +6,8 @@
 
         <title>{{config('app.name')}}</title>
         <!-- style -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
         <!-- Scripts -->
@@ -25,26 +27,28 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-        <div class="relative flex justify-center min-h-screen py-4 bg-gray-100 items-top dark:bg-gray-900 sm:items-center sm:pt-0">
-            @if (Route::has('login'))
-                <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
+<body class="antialiased">
+    <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen">
+        <div class="max-w-7xl mx-auto p-6 lg:p-8">
+            <div class="flex flex-col justify-center items-center">
+                <h1 class="font-light text-5xl">LiteNote</h1>
+                <div class="mt-8">
+                @if (Route::has('login'))
                     @auth
                         <a href="{{ route('notes.index') }}" class="text-sm text-gray-700 underline dark:text-gray-500">Notes</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline dark:text-gray-500">Log in</a>
+                        <a href="{{ route('login') }}" class=" text-white btn btn-success inline-block px-4 py-2 mt-2 text-sm font-bold  uppercase rounded-md" style="background-color:  indigo">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-white  btn btn-success inline-block px-4 py-2 mt-2 text-sm font-bold  uppercase rounded-md" style="background-color: indigo">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
-            <h1 class="text-5xl">
-                LiteNote
-
-            </h1>
-
+                </div>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
+
